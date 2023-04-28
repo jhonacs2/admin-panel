@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {LoginComponent} from './login/login.component';
 import {PublicRoutesModule} from "./routes/public-routes.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {AuthModule} from "../../../../data/repositories/Auth/auth.module";
 
 
 @NgModule({
@@ -15,8 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
     PublicRoutesModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ]
+    AuthModule
+  ],
 })
 export class PublicModule {
 }

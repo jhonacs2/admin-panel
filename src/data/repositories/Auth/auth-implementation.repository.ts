@@ -24,12 +24,12 @@ export class AuthImplementationRepository extends AuthRepository {
 
   login(param: { email: string; password: string }): Observable<AuthModel> {
     return this._http
-      .post<AuthEntity>('http://localhost:3000/api/login', {...param})
+      .post<AuthEntity>('/api/login', {...param})
       .pipe(map(this.authMapper.mapFrom));
   }
 
   renewToken(param: { token: string }): Observable<RenewModel> {
-    return this._http.get<RenewTokenEntity>('http://localhost:3000/api/login/renew', {headers: {'x-token': param.token}})
+    return this._http.get<RenewTokenEntity>('/api/login/renew', {headers: {'x-token': param.token}})
       .pipe(map(this.renewMapper.mapFrom));
   }
 

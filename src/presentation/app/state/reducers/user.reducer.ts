@@ -7,7 +7,7 @@ export interface UserState {
   loading: boolean
 }
 
-interface DataUser {
+export interface DataUser {
   token: string,
   data: UserModel
 }

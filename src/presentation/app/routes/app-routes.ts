@@ -1,4 +1,5 @@
 import {Routes} from "@angular/router";
+import {TokenGuard} from "../guard/token.guard";
 
 export const APP_ROUTES: Routes = [
   {
@@ -7,11 +8,13 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'secure',
-    loadChildren: () => import('../modules/secure/secure.module').then(m => m.SecureModule)
+    loadChildren: () => import('../modules/secure/secure.module').then(m => m.SecureModule),
+    canActivate: [TokenGuard],
   },
   {
     path: '',
     redirectTo: 'public',
     pathMatch: 'full'
-  }
+  },
+  {path: '**', redirectTo: 'public'}
 ]

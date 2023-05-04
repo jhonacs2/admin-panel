@@ -1,16 +1,18 @@
 import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {UserActions} from "../action";
-import {map, mergeMap} from "rxjs";
+import {map, mergeMap, tap} from "rxjs";
 import {AuthLoginUseCase} from "../../../../domain/usecases/auth/auth-login-use.case";
 import {RenewTokenUseCase} from "../../../../domain/usecases/auth/renew-token-use.case";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UserEffect {
 
   constructor(private _action$: Actions,
               private _authLoginUseCase: AuthLoginUseCase,
-              private _renewTokenUseCase: RenewTokenUseCase) {
+              private _renewTokenUseCase: RenewTokenUseCase,
+              private _router: Router) {
   }
 
   loginUser$ = createEffect(() =>
@@ -31,6 +33,7 @@ export class UserEffect {
       mergeMap(
         (action) => this._renewTokenUseCase.execute({token: action.token})
           .pipe(
+            tap(() => this._router.navigateByUrl('/secure')),
             map(userData => UserActions.loadDataUser({userData}))
           )
       )

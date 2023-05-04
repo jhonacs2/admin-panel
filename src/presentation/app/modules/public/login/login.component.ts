@@ -1,15 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppState} from "../../../state/app.state";
 import {Store} from "@ngrx/store";
-import {login} from "../../../state/action/user.actions";
+import {login, verifyToken} from "../../../state/action/user.actions";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private _store: Store<AppState>) {
@@ -18,6 +18,11 @@ export class LoginComponent {
       password: ['', Validators.required],
       remember: [false]
     })
+  }
+
+  ngOnInit(): void {
+    const token = localStorage.getItem("token") || '';
+    token && this._store.dispatch(verifyToken({token}))
   }
 
   login(): void {

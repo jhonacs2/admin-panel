@@ -21,6 +21,7 @@ export class UserEffect {
       mergeMap(
         (action) => this._authLoginUseCase.execute({email: action.email, password: action.password})
           .pipe(
+            tap(user => localStorage.setItem("token", user.token)),
             map(user => UserActions.verifyToken({token: user.token}))
           )
       )

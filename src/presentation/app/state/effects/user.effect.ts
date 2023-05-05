@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {Actions, createEffect, ofType} from "@ngrx/effects";
-import {UserActions} from "../action";
-import {map, mergeMap, tap} from "rxjs";
-import {AuthLoginUseCase} from "../../../../domain/usecases/auth/auth-login-use.case";
-import {RenewTokenUseCase} from "../../../../domain/usecases/auth/renew-token-use.case";
-import {Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {UserActions} from '../action';
+import {map, mergeMap, pipe, tap} from 'rxjs';
+import {AuthLoginUseCase} from '../../../../domain/usecases/auth/auth-login-use.case';
+import {RenewTokenUseCase} from '../../../../domain/usecases/auth/renew-token-use.case';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserEffect {
@@ -21,12 +21,12 @@ export class UserEffect {
       mergeMap(
         (action) => this._authLoginUseCase.execute({email: action.email, password: action.password})
           .pipe(
-            tap(user => localStorage.setItem("token", user.token)),
+            tap(user => localStorage.setItem('token', user.token)),
             map(user => UserActions.verifyToken({token: user.token}))
           )
       )
     )
-  )
+  );
 
   verifyToken$ = createEffect(() =>
     this._action$.pipe(
@@ -39,5 +39,17 @@ export class UserEffect {
           )
       )
     )
-  )
+  );
+
+  logoutUser$ = createEffect(() =>
+      this._action$.pipe(
+        ofType(UserActions.logoutUser),
+        pipe(
+          tap(() => this._router.navigateByUrl('/login')),
+          tap(() => UserActions.logoutUser()),
+          tap(() => localStorage.removeItem('token'))
+        )
+      ),
+    {dispatch: false}
+  );
 }

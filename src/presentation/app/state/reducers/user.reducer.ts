@@ -1,10 +1,10 @@
-import {UserModel} from "../../../../domain/models/auth/user.model";
-import {createReducer, on} from "@ngrx/store";
-import {loadDataUser, login, verifyToken} from "../action/user.actions";
+import {UserModel} from '../../../../domain/models/auth/user.model';
+import {createReducer, on} from '@ngrx/store';
+import {loadDataUser, login, logoutUser, verifyToken} from '../action/user.actions';
 
 export interface UserState {
-  user: DataUser
-  loading: boolean
+  user: DataUser;
+  loading: boolean;
 }
 
 export interface DataUser {
@@ -16,16 +16,16 @@ export const UserInitialState: UserState = {
   user: {
     token: '',
     data: {
-      "role": '',
-      "google": true,
-      "name": '',
-      "email": '',
-      "img": '',
-      "id": ''
+      'role': '',
+      'google': true,
+      'name': '',
+      'email': '',
+      'img': '',
+      'id': ''
     }
   },
   loading: false
-}
+};
 
 export const userReducer = createReducer(
   UserInitialState,
@@ -42,4 +42,7 @@ export const userReducer = createReducer(
     loading: false,
     user: {...state.user, data: userData.usuario}
   })),
-)
+  on(logoutUser, (state) => ({
+    ...UserInitialState
+  }))
+);

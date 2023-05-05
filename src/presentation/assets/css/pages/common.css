@@ -15,8 +15,8 @@ File: scss
 /*Light colors*/
 /*Normal Color*/
 /*Extra Variable*/
-/*============================================================== 
- For all pages 
+/*==============================================================
+ For all pages
  ============================================================== */
 #main-wrapper {
   width: 100%;
@@ -145,6 +145,7 @@ File: scss
 
 .topbar .profile-pic {
   width: 30px;
+  height: 30px;
   border-radius: 100%;
 }
 

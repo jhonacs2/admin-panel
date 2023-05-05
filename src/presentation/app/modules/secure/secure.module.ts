@@ -5,6 +5,7 @@ import {SecureRoutesModule} from "./routes/secure-routes.module";
 import {HeaderComponent} from './components/header/header.component';
 import {SideBarComponent} from './components/side-bar/side-bar.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ImageUrlPipe } from './pipes/image-url.pipe';
     HeaderComponent,
     SideBarComponent,
     ImageUrlPipe,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

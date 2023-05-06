@@ -6,6 +6,7 @@ import {HeaderComponent} from './components/header/header.component';
 import {SideBarComponent} from './components/side-bar/side-bar.component';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SideBarComponent,
     ImageUrlPipe,
     DashboardComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

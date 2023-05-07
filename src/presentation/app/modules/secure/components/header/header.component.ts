@@ -15,23 +15,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public userData!: DataUser;
 
-  private unsubscribe$: Subject<void>;
+  private _unsubscribe$: Subject<void>;
 
   constructor(private _store: Store<AppState>) {
-    this.unsubscribe$ = new Subject<void>();
+    this._unsubscribe$ = new Subject<void>();
   }
 
   ngOnInit(): void {
     this._store.select(selectUserData)
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(takeUntil(this._unsubscribe$))
       .subscribe(value => {
         this.userData = value;
       });
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
+    this._unsubscribe$.next();
+    this._unsubscribe$.complete();
   }
 
   public logout(): void {

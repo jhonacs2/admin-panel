@@ -35,9 +35,16 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  public changeImage(image?: Event) {
+    const inputFile = image?.target as HTMLInputElement;
+    console.log(inputFile.files?.item(0))
+  }
+
   private _initialize(): void {
     this._store.select(selectUserData)
       .pipe(takeUntil(this._unsubscribe$))
       .subscribe(({data}) => this.userDetails = data);
   }
+
+  protected readonly HTMLInputElement = HTMLInputElement;
 }

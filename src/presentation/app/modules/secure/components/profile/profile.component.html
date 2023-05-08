@@ -29,8 +29,8 @@
                      class="form-control"
                      id="exampleInputEmail1"
                      placeholder="Email"
-                     formControlName="email">
-              <!--              [readOnly]="usuario.google"-->
+                     formControlName="email"
+                     [readOnly]="userDetails.google">
             </div>
           </div>
 
@@ -53,12 +53,11 @@
         <h6 class="card-subtitle">Imagen del usuario</h6>
 
         <div class="text-center">
-          <!--          <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">-->
-          <!--          <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar">-->
+          <img [src]="userDetails.img | imageUrl" class="img-avatar">
         </div>
 
-        <!--        <input type="file"-->
-        <!--               (change)="cambiarImagen($event.target.files[0])">-->
+        <input type="file"
+               (change)="changeImage($event)">
 
         <br>
         <br>

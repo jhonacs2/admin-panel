@@ -15,8 +15,8 @@ import {RenewTokenRepositoryMapper} from "./mappers/renew-token-repository.mappe
 })
 export class AuthImplementationRepository extends AuthRepository {
 
-  authMapper: AuthRepositoryMapper = new AuthRepositoryMapper();
-  renewMapper: RenewTokenRepositoryMapper = new RenewTokenRepositoryMapper();
+  private _authMapper: AuthRepositoryMapper = new AuthRepositoryMapper();
+  private _renewMapper: RenewTokenRepositoryMapper = new RenewTokenRepositoryMapper();
 
   constructor(private _http: HttpClient) {
     super();
@@ -25,12 +25,12 @@ export class AuthImplementationRepository extends AuthRepository {
   login(param: { email: string; password: string }): Observable<AuthModel> {
     return this._http
       .post<AuthEntity>('/api/login', {...param})
-      .pipe(map(this.authMapper.mapFrom));
+      .pipe(map(this._authMapper.mapFrom));
   }
 
   renewToken(param: { token: string }): Observable<RenewModel> {
     return this._http.get<RenewTokenEntity>('/api/login/renew', {headers: {'x-token': param.token}})
-      .pipe(map(this.renewMapper.mapFrom));
+      .pipe(map(this._renewMapper.mapFrom));
   }
 
 }

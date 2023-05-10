@@ -8,7 +8,6 @@ import {ImageUrlPipe} from './pipes/image-url.pipe';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {UserModule} from '../../../../data/repositories/user/user.module';
 
 
 @NgModule({
@@ -25,7 +24,6 @@ import {UserModule} from '../../../../data/repositories/user/user.module';
     ReactiveFormsModule,
     SecureRoutesModule,
     NgOptimizedImage,
-    UserModule
   ]
 })
 export class SecureModule {

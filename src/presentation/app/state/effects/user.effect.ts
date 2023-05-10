@@ -5,6 +5,7 @@ import {map, mergeMap, pipe, tap} from 'rxjs';
 import {AuthLoginUseCase} from '../../../../domain/usecases/auth/auth-login-use.case';
 import {RenewTokenUseCase} from '../../../../domain/usecases/auth/renew-token-use.case';
 import {Router} from '@angular/router';
+import {ChangePhotoUseCase} from '../../../../domain/usecases/user/change-photo.usecase';
 
 @Injectable()
 export class UserEffect {
@@ -12,6 +13,7 @@ export class UserEffect {
   constructor(private _action$: Actions,
               private _authLoginUseCase: AuthLoginUseCase,
               private _renewTokenUseCase: RenewTokenUseCase,
+              private _changePhotoUseCase: ChangePhotoUseCase,
               private _router: Router) {
   }
 
@@ -51,5 +53,26 @@ export class UserEffect {
         )
       ),
     {dispatch: false}
+  );
+
+
+  uploadPhotoUser$ = createEffect(() =>
+    this._action$.pipe(
+      ofType(UserActions.updatePhotoUser),
+      mergeMap(
+        (action) => this._changePhotoUseCase.execute({
+          userType: action.userTypes,
+          userId: action.userId,
+          image: action.file
+        })
+          .pipe(
+            map(imageData => UserActions.updatedPhotoUser({
+              ok: imageData.ok,
+              msg: imageData.message,
+              nombreArchivo: imageData.fileName
+            }))
+          )
+      )
+    )
   );
 }

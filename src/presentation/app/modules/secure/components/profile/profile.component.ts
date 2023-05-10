@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserModel} from '../../../../../../domain/models/auth/user.model';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../../state/app.state';
 import {Subject, takeUntil} from 'rxjs';
 import {selectUserData} from '../../../../state/selectors/user.selector';
+import {updatePhotoUser} from '../../../../state/action/user.actions';
+import {UserTypes} from '../../../../../../base/enums/user-types.enum';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +15,11 @@ import {selectUserData} from '../../../../state/selectors/user.selector';
 })
 export class ProfileComponent implements OnInit {
 
+  @ViewChild('profilePhoto') public profilePhoto!: ElementRef<HTMLImageElement>;
+
   public profileForm: FormGroup;
   public userDetails!: UserModel;
+  public profilePhotoFile!: File;
 
   private _unsubscribe$: Subject<void>;
 
@@ -37,7 +42,8 @@ export class ProfileComponent implements OnInit {
 
   public changeImage(image?: Event) {
     const inputFile = image?.target as HTMLInputElement;
-    console.log(inputFile.files?.item(0))
+    this.profilePhotoFile = inputFile.files?.item(0)!;
+    this.profilePhoto.nativeElement.src = URL.createObjectURL(inputFile.files?.item(0)!);
   }
 
   private _initialize(): void {
@@ -46,5 +52,11 @@ export class ProfileComponent implements OnInit {
       .subscribe(({data}) => this.userDetails = data);
   }
 
-  protected readonly HTMLInputElement = HTMLInputElement;
+  public uploadImage(): void {
+    this._store.dispatch(updatePhotoUser({
+      userTypes: UserTypes.USUARIO,
+      userId: this.userDetails.id,
+      file: this.profilePhotoFile
+    }));
+  }
 }

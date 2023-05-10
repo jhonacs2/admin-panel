@@ -7,7 +7,7 @@ export class ChangePhotoRepositoryMapper extends Mapper<ChangePhotoEntity, Uploa
     return {
       ok: param.ok,
       message: param.msg,
-      fileName: param.fileName
+      fileName: param.nombreArchivo
     };
   }
 
@@ -15,7 +15,7 @@ export class ChangePhotoRepositoryMapper extends Mapper<ChangePhotoEntity, Uploa
     return {
       ok: param.ok,
       msg: param.message,
-      fileName: param.fileName
+      nombreArchivo: param.fileName
     };
   }
 }

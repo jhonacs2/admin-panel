@@ -3,13 +3,15 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './routes/app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from "@angular/common/http";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {StoreModule} from "@ngrx/store";
-import {AuthModule} from "../../data/repositories/Auth/auth.module";
-import {ROOT_REDUCERS} from "./state/app.state";
-import {EffectsModule} from "@ngrx/effects";
-import {EffectsArray} from "./state/effects";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {StoreModule} from '@ngrx/store';
+import {AuthModule} from '../../data/repositories/Auth/auth.module';
+import {ROOT_REDUCERS} from './state/app.state';
+import {EffectsModule} from '@ngrx/effects';
+import {EffectsArray} from './state/effects';
+import {UserModule} from '../../data/repositories/user/user.module';
+import {TokenInterceptorService} from './interceptor/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import {EffectsArray} from "./state/effects";
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
+    UserModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     EffectsModule.forRoot(EffectsArray),
     StoreDevtoolsModule.instrument({
@@ -28,7 +31,7 @@ import {EffectsArray} from "./state/effects";
       logOnly: !isDevMode()
     })
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

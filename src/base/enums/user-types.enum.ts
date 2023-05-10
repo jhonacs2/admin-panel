@@ -1,5 +1,5 @@
 export enum UserTypes {
-  USUARIO = 'usuario',
+  USUARIO = 'usuarios',
   HOSPITALES = 'hospitales',
   MEDICOS = 'medicos'
 }

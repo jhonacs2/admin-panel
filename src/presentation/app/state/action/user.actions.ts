@@ -1,5 +1,6 @@
 import {createAction, props} from '@ngrx/store';
 import {RenewModel} from '../../../../domain/models/auth/renew.model';
+import {UserTypes} from '../../../../base/enums/user-types.enum';
 
 export const login = createAction(
   '[Login Page] User Login',
@@ -19,3 +20,15 @@ export const loadDataUser = createAction(
 export const logoutUser = createAction(
   '[header] Logout User'
 );
+
+export const updatePhotoUser = createAction(
+  '[Profile Page] Upload Photo',
+  props<{ userTypes: UserTypes, userId: string, file: File }>()
+);
+
+export const updatedPhotoUser = createAction(
+  '[Profile Page] Uploaded Photo Success',
+  props<{ ok: boolean, msg: string, nombreArchivo: string }>()
+);
+
+

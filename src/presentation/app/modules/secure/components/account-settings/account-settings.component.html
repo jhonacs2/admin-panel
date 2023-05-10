@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+
+        <h4>Select Theme</h4>
+
+        <div class="r-panel-body">
+          <ul id="themecolors" class="m-t-20">
+            <li><b>Con el sidebar claro</b></li>
+            <li><a (click)="changeTheme('green',$event)" #themeColors data-theme="green" class="selector green-theme">1</a></li>
+            <li><a (click)="changeTheme('default',$event)" #themeColors data-theme="default" class="selector default-theme">2</a></li>
+            <li><a (click)="changeTheme('red',$event)" #themeColors data-theme="red" class="selector red-theme">3</a></li>
+            <li><a (click)="changeTheme('blue',$event)" #themeColors data-theme="blue" class="selector blue-theme">4</a></li>
+            <li><a (click)="changeTheme('purple',$event)" #themeColors data-theme="purple" class="selector purple-theme">5</a></li>
+            <li><a (click)="changeTheme('megna',$event)" #themeColors data-theme="megna" class="selector megna-theme">6</a></li>
+
+            <li class="d-block m-t-30"><b>Con el sidebar oscuro</b></li>
+            <li><a (click)="changeTheme('default-dark',$event)" #themeColors data-theme="default-dark"
+                   class="selector default-dark-theme">7</a></li>
+            <li><a (click)="changeTheme('green-dark',$event)" #themeColors data-theme="green-dark" class="selector green-dark-theme">8</a>
+            </li>
+            <li><a (click)="changeTheme('red-dark',$event)" #themeColors data-theme="red-dark" class="selector red-dark-theme">9</a></li>
+            <li><a (click)="changeTheme('blue-dark',$event)" #themeColors data-theme="blue-dark"
+                   class="selector blue-dark-theme working">10</a></li>
+            <li><a (click)="changeTheme('purple-dark',$event)" #themeColors data-theme="purple-dark"
+                   class="selector purple-dark-theme">11</a></li>
+            <li><a (click)="changeTheme('megna-dark',$event)" #themeColors data-theme="megna-dark" class="selector megna-dark-theme">12</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

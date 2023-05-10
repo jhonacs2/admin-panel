@@ -795,6 +795,7 @@ sidebar navigation
 
 .sidebar-nav {
   background: #fff;
+  height: 100%;
   padding: 15px 0 0 0px; }
   .sidebar-nav ul {
     margin: 0px;

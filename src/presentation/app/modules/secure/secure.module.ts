@@ -8,6 +8,8 @@ import {ImageUrlPipe} from './pipes/image-url.pipe';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AccountSettingsComponent} from './components/account-settings/account-settings.component';
+import {AccountSettingsService} from './services/account-settings.service';
 
 
 @NgModule({
@@ -18,13 +20,15 @@ import {ReactiveFormsModule} from '@angular/forms';
     ImageUrlPipe,
     DashboardComponent,
     ProfileComponent,
+    AccountSettingsComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SecureRoutesModule,
     NgOptimizedImage,
-  ]
+  ],
+  providers: [AccountSettingsService]
 })
 export class SecureModule {
 }

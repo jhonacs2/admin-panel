@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AccountSettingsService} from '../services/account-settings.service';
+import {AccountSettingsService} from '../../services/account-settings.service';
 
 declare function customInitFunctions(): void;
 

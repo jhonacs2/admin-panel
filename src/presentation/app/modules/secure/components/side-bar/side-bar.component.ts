@@ -14,11 +14,34 @@ import {logoutUser} from '../../../../state/action/user.actions';
 export class SideBarComponent implements OnInit {
 
   public userData!: DataUser;
+  public menuItems: any[];
 
   private unsubscribe$: Subject<void>;
 
   constructor(private _store: Store<AppState>) {
     this.unsubscribe$ = new Subject();
+    this.menuItems = [
+      {
+        title: 'Dashboard',
+        icon: 'mdi mdi-gauge',
+        subMenu: [
+          {title: 'Main', url: './'},
+          {title: 'Graphics', url: 'graphics'},
+          {title: 'ProgressBar', url: 'progress'},
+          {title: 'Promises', url: 'promises'},
+          {title: 'rxjs', url: 'rxjs'}
+        ]
+      },
+      {
+        title: 'Mantenimiento',
+        icon: 'mdi mdi-folder-lock-open ',
+        subMenu: [
+          {title: 'Usuarios', url: 'usuarios'},
+          {title: 'Hospitales', url: 'hospitales'},
+          {title: 'Medicos', url: 'medicos'},
+        ]
+      }
+    ];
   }
 
   ngOnInit(): void {

@@ -49,7 +49,8 @@ export class UserEffect {
         pipe(
           tap(() => this._router.navigateByUrl('/login')),
           tap(() => UserActions.logoutUser()),
-          tap(() => localStorage.removeItem('token'))
+          tap(() => localStorage.removeItem('token')),
+          tap(() => sessionStorage.removeItem('lastRoute'))
         )
       ),
     {dispatch: false}

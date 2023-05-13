@@ -9,7 +9,6 @@ export const APP_ROUTES: Routes = [
   {
     path: 'secure',
     loadChildren: () => import('../modules/secure/secure.module').then(m => m.SecureModule),
-    canActivate: [TokenGuard],
   },
   {
     path: '',

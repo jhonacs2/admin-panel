@@ -4,11 +4,13 @@ import {DashboardComponent} from '../components/dashboard/dashboard.component';
 import {ProfileComponent} from '../views/profile/profile.component';
 import {AccountSettingsComponent} from '../views/account-settings/account-settings.component';
 import {GraphicComponent} from '../views/graphic/graphic.component';
+import {TokenGuard} from '../../../guard/token.guard';
 
 export const SECURE_ROUTES: Routes = [
   {
     path: '',
     component: MainPageComponent,
+    canMatch: [TokenGuard],
     children: [
       {path: '', component: DashboardComponent, data: {title: 'Dashboard'}},
       {path: 'profile', component: ProfileComponent, data: {title: 'User Profile'}},

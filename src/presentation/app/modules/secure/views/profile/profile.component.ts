@@ -7,7 +7,7 @@ import {Subject, takeUntil} from 'rxjs';
 import {selectUserData} from '../../../../state/selectors/user.selector';
 import {updatePhotoUser} from '../../../../state/action/user.actions';
 import {UserTypes} from '../../../../../../base/enums/user-types.enum';
-import {AccountSettingsService} from '../../services/account-settings.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +25,8 @@ export class ProfileComponent implements OnInit {
   private _unsubscribe$: Subject<void>;
 
   constructor(private _formBuilder: FormBuilder,
-              private _store: Store<AppState>) {
+              private _store: Store<AppState>,
+              private _router: Router) {
     this._unsubscribe$ = new Subject<void>();
     this.profileForm = this._formBuilder.group({});
   }
@@ -49,6 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private _initialize(): void {
+    sessionStorage.setItem('lastRoute', this._router.url);
     this._store.select(selectUserData)
       .pipe(takeUntil(this._unsubscribe$))
       .subscribe(({data}) => this.userDetails = data);

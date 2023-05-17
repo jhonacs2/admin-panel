@@ -11,6 +11,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AccountSettingsComponent} from './views/account-settings/account-settings.component';
 import {AccountSettingsService} from './services/account-settings.service';
 import { GraphicComponent } from './views/graphic/graphic.component';
+import { DonutComponent } from './components/charts/donut/donut.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { GraphicComponent } from './views/graphic/graphic.component';
     ProfileComponent,
     AccountSettingsComponent,
     GraphicComponent,
+    DonutComponent,
   ],
   imports: [
     CommonModule,

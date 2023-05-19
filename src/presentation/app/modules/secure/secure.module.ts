@@ -7,11 +7,13 @@ import {SideBarComponent} from './components/side-bar/side-bar.component';
 import {ImageUrlPipe} from './pipes/image-url.pipe';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './views/profile/profile.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AccountSettingsComponent} from './views/account-settings/account-settings.component';
 import {AccountSettingsService} from './services/account-settings.service';
 import { GraphicComponent } from './views/graphic/graphic.component';
 import { DonutComponent } from './components/charts/donut/donut.component';
+import { ProgressBarComponent } from './views/progress-bar/progress-bar.component';
+import { IncrementsComponent } from './components/incrementers/increments.component';
 
 
 @NgModule({
@@ -25,12 +27,15 @@ import { DonutComponent } from './components/charts/donut/donut.component';
     AccountSettingsComponent,
     GraphicComponent,
     DonutComponent,
+    ProgressBarComponent,
+    IncrementsComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SecureRoutesModule,
     NgOptimizedImage,
+    FormsModule,
   ],
   providers: [AccountSettingsService]
 })

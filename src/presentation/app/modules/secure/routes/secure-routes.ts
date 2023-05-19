@@ -5,6 +5,7 @@ import {ProfileComponent} from '../views/profile/profile.component';
 import {AccountSettingsComponent} from '../views/account-settings/account-settings.component';
 import {GraphicComponent} from '../views/graphic/graphic.component';
 import {TokenGuard} from '../../../guard/token.guard';
+import {ProgressBarComponent} from '../views/progress-bar/progress-bar.component';
 
 export const SECURE_ROUTES: Routes = [
   {
@@ -16,6 +17,7 @@ export const SECURE_ROUTES: Routes = [
       {path: 'profile', component: ProfileComponent, data: {title: 'User Profile'}},
       {path: 'account-settings', component: AccountSettingsComponent, data: {title: 'Account Settings'}},
       {path: 'graphics', component: GraphicComponent, data: {title: 'graphics #1'}},
+      {path: 'progress', component: ProgressBarComponent, data: {title: 'Progress'}},
     ]
   }
 ];

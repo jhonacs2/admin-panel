@@ -12,6 +12,9 @@ Welcome to the repository of the frontend for Fernando Herrera's Advanced Angula
 - Proxy-based requests: I have configured the project to make requests through a proxy, facilitating development by avoiding CORS issues during local development.
 - Technologies used: The project is developed using Angular 15, NGRX, Chart.js, HTML, and SASS.
 
+## Project Status
+The repository is constantly being developed and improved. Although the course has ended, I am still working on implementing new features and optimizations in the project.
+
 ## Proxy Configuration
 The project uses a proxy to redirect requests to a remote server and avoid CORS issues during local development. Here's how you can configure the proxy:
 
@@ -42,7 +45,7 @@ Example
 }
 ```
 the localhost or the url has to point to the backend made in the course and add the configuration in your ng serve --proxy-config proxy.conf.json (package.json)
-```js
+```javascript
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
@@ -62,7 +65,7 @@ ng serve
 4.Open your browser and visit http://localhost:4200 to see the application in action.
 Enjoy the Advanced Angular Course, and please don't hesitate to contact me if you have any questions or suggestions!
 
-## Usage Instructions
+## Contributions
 Contributions to the project are welcome! If you have any ideas to improve the project or encounter any issues, please open an issue or submit a pull request.
 
 ## License

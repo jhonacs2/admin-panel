@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Router} from '@angular/router';
-import {IncrementsComponent} from '../../components/incrementers/increments.component';
 
 @Component({
   selector: 'app-progress-bar',
   templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.scss']
+  encapsulation: ViewEncapsulation.None
 })
 export class ProgressBarComponent implements OnInit {
 

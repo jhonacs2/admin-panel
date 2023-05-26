@@ -14,6 +14,7 @@ import { GraphicComponent } from './views/graphic/graphic.component';
 import { DonutComponent } from './components/charts/donut/donut.component';
 import { ProgressBarComponent } from './views/progress-bar/progress-bar.component';
 import { IncrementsComponent } from './components/incrementers/increments.component';
+import { UserPanelComponent } from './views/control-panel/user-panel/user-panel.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { IncrementsComponent } from './components/incrementers/increments.compon
     DonutComponent,
     ProgressBarComponent,
     IncrementsComponent,
+    UserPanelComponent,
   ],
   imports: [
     CommonModule,
